@@ -9,9 +9,33 @@ description = "Starter Python project skeleton"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
+authors = [ { name = "mwinnick68-afk" } ]
+license = { text = "MIT" }
+keywords = ["starter", "template", "example"]
+classifiers = [
+	"License :: OSI Approved :: MIT License",
+	"Programming Language :: Python",
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3.10",
+	"Programming Language :: Python :: 3 :: Only",
+	"Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/mwinnick68-afk/codex-test"
+Source = "https://github.com/mwinnick68-afk/codex-test"
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0"]
+dev = [
+	"pytest>=8.0",
+	"pytest-cov",
+	"black",
+	"isort",
+	"ruff",
+	"mypy",
+	"pre-commit",
+	"coverage",
+]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
@@ -21,4 +45,31 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-q"
+addopts = "-q --strict-config --strict-markers --cov=codex_test --cov-report=term-missing --cov-fail-under=95"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+
+[tool.mypy]
+python_version = 3.10
+ignore_missing_imports = true
+
+[tool.coverage.run]
+branch = true
+source = ["codex_test"]
+
+[tool.coverage.report]
+fail_under = 95
+show_missing = true
+skip_covered = true
