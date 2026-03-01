@@ -25,3 +25,21 @@ env/
 
 # OS files
 .DS_Store
+
+# Environment files
+.env
+.env.*
+
+# Coverage
+.coverage
+htmlcov/
+
+# Build metadata
+pip-wheel-metadata/
+*.egg
+
+# Misc
+*.log
+.python-version
+.ropeproject/
+.cache/
