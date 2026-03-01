@@ -6,7 +6,9 @@ Starter Python project skeleton with a `src/` layout, tests, and basic developer
 
 - Python 3.10 or newer
 
-## Setup
+## Quickstart
+
+Create and activate a virtual environment, then install development dependencies:
 
 ```bash
 python3 -m venv .venv
@@ -15,35 +17,11 @@ python -m pip install -U pip
 pip install -e ".[dev]"
 ```
 
-## Run
+Run the CLI:
 
 ```bash
 python -m codex_test.main
 python -m codex_test.main Alice
-```
-
-## Test
-
-```bash
-pytest
-```
-
-## Features
-
-- `src/`-layout for packaging
-- Test suite using `pytest`
-- Formatting and linting configured via `black`, `isort`, and `ruff`
-- Input hardening in `greet` (normalization, empty/control-char rejection, max length)
-
-## Quickstart (developer)
-
-Create and activate a virtualenv, then install development dependencies:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -U pip
-pip install -e '[dev]'
 ```
 
 Run tests:
@@ -52,15 +30,7 @@ Run tests:
 pytest
 ```
 
-The pytest configuration enforces branch coverage with a minimum of 95%.
-
-Run the package (module entrypoint):
-
-```bash
-python -m codex_test.main
-```
-
-Lint and format:
+Lint, format, and type-check:
 
 ```bash
 # format
@@ -74,6 +44,22 @@ ruff check .
 mypy src
 ```
 
+## Features
+
+- `src/`-layout for packaging
+- Test suite using `pytest`
+- Formatting and linting configured via `black`, `isort`, and `ruff`
+- Input hardening in `greet` (normalization, empty/control-char rejection, max length)
+
+## Repository structure notes
+
+- `codex-test/` is a Git submodule path in this repository. If it appears empty locally,
+  initialize submodules as needed:
+
+```bash
+git submodule update --init --recursive
+```
+
 ## CI
 
 GitHub Actions runs on pushes to `main` and pull requests for Python `3.10`, `3.11`, and `3.12`.
@@ -84,8 +70,6 @@ The workflow executes:
 - `isort --check-only .`
 - `mypy src`
 - `pytest` (with coverage threshold enforcement from `pyproject.toml`)
-
-Development helper (optional): add a `Makefile` with `make test`, `make lint`, `make format` for convenience.
 
 ## Contributing
 
